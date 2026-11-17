@@ -1,0 +1,12 @@
+mutation UpsertProductLabel($draft: CustomObjectDraft!) {
+  createOrUpdateCustomObject(draft: $draft) {
+    id
+    key
+    version
+    container
+    createdAt
+    lastModifiedAt
+    value
+  }
+}
+

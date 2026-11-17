@@ -1,0 +1,38 @@
+query FetchProductsForLabels($limit: Int, $offset: Int, $where: String) {
+  products(limit: $limit, offset: $offset, where: $where) {
+    total
+    count
+    offset
+    results {
+      id
+      key
+      masterData {
+        current {
+          nameAllLocales {
+            locale
+            value
+          }
+          masterVariant {
+            sku
+            images {
+              url
+            }
+          }
+        }
+        staged {
+          nameAllLocales {
+            locale
+            value
+          }
+          masterVariant {
+            sku
+            images {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

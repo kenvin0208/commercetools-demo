@@ -1,0 +1,12 @@
+query FetchProductLabelDetails($container: String!, $key: String!) {
+  customObject(container: $container, key: $key) {
+    id
+    key
+    version
+    container
+    createdAt
+    lastModifiedAt
+    value
+  }
+}
+

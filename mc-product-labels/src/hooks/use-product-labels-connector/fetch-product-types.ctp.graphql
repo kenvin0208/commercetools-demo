@@ -1,0 +1,66 @@
+query FetchProductTypesForLabels($limit: Int) {
+  productTypes(limit: $limit) {
+    total
+    results {
+      id
+      key
+      name
+      attributeDefinitions(limit: 500) {
+        results {
+          name
+          labelAllLocales {
+            locale
+            value
+          }
+          type {
+            name
+            ... on EnumAttributeDefinitionType {
+              values(limit: 500) {
+                results {
+                  key
+                  label
+                }
+              }
+            }
+            ... on LocalizableEnumAttributeDefinitionType {
+              values(limit: 500) {
+                results {
+                  key
+                  labelAllLocales {
+                    locale
+                    value
+                  }
+                }
+              }
+            }
+            ... on SetAttributeDefinitionType {
+              elementType {
+                name
+                ... on EnumAttributeDefinitionType {
+                  values(limit: 500) {
+                    results {
+                      key
+                      label
+                    }
+                  }
+                }
+                ... on LocalizableEnumAttributeDefinitionType {
+                  values(limit: 500) {
+                    results {
+                      key
+                      labelAllLocales {
+                        locale
+                        value
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
