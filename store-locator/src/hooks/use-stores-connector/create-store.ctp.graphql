@@ -1,0 +1,20 @@
+mutation CreateStore($draft: CreateStore!) {
+  createStore(draft: $draft) {
+    id
+    version
+    key
+    nameAllLocales {
+      locale
+      value
+    }
+    custom {
+      type {
+        key
+      }
+      customFieldsRaw {
+        name
+        value
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+query FetchStoreLocatorType($key: String!) {
+  typeDefinition(key: $key) {
+    key
+    resourceTypeIds
+    fieldDefinitions {
+      name
+      type {
+        name
+      }
+    }
+  }
+}

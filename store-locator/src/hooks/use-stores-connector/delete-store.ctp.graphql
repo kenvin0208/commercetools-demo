@@ -1,0 +1,6 @@
+mutation DeleteStore($id: String!, $version: Long!) {
+  deleteStore(id: $id, version: $version) {
+    id
+    key
+  }
+}

@@ -130,6 +130,7 @@ export function SiteHeader() {
           <nav className="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
             <Link href="/">Home</Link>
             <Link href="/products">Shop</Link>
+            <Link href="/stores">Stores</Link>
             <Link href="/search">Search</Link>
             <Link href="/account">Account</Link>
           </nav>
@@ -283,6 +284,7 @@ export function SiteHeader() {
           {[
             { href: "/", label: "Home" },
             { href: "/products", label: "Shop" },
+            { href: "/stores", label: "Stores" },
             { href: "/search", label: "Search" },
             { href: "/account", label: "Account" },
           ].map((item) => (

@@ -12,9 +12,9 @@ export function ProductImagePanel({
   labels?: ProductLabelBadge[];
 }) {
   return (
-    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-slate-100">
-        {image ? <Image src={image} alt={name} fill className="object-cover" /> : null}
+    <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-sm aspect-4/5">
+      <div className="relative aspect-4/5 overflow-hidden rounded-2xl bg-slate-100">
+        {image ? <Image src={image} alt={name} fill className="object-contain mix-blend-multiply" /> : null}
         <ProductLabelsOverlay labels={labels} />
       </div>
     </div>

@@ -27,6 +27,10 @@ CT_STORE_KEY_US=your-united-states-store-key
 
 The API client must have permission to read both Stores and their product data. If a Store key is omitted, requests use the project-wide product catalog.
 
+## Store locator
+
+Store locations are read from commercetools Stores and managed in Merchant Center. Configure the Store Custom Type fields and demo Sydney/Melbourne records as described in [docs/store-locator.md](./docs/store-locator.md). Without commercetools credentials, the storefront displays those two demo locations locally.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

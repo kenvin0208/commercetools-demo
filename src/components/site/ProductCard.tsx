@@ -4,8 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getLocalizedValue } from "@/src/utils/localized";
 import { formatPrice } from "@/src/utils/price";
-import { useCart } from "@/src/components/site/CartProvider";
-import { Button } from "@/src/components/ui/Button";
+import { CartAddButton } from "@/src/components/site/CartAddButton";
 
 import { WishlistButton } from "@/src/components/account/WishlistButton";
 import { ProductLabelsOverlay } from "@/src/components/product/ProductLabelsOverlay";
@@ -27,7 +26,6 @@ export type ProductCardItem = {
 };
 
 export function ProductCard({ product }: { product: ProductCardItem }) {
-  const { addItem } = useCart();
   const slug = getLocalizedValue(product.slug) || product.key || product.id;
 
   return (
@@ -39,7 +37,7 @@ export function ProductCard({ product }: { product: ProductCardItem }) {
               src={product.image}
               alt={getLocalizedValue(product.name)}
               fill
-              className="object-cover transition group-hover:scale-105"
+              className="object-contain transition group-hover:scale-105 mix-blend-multiply"
             />
           ) : null}
           <ProductLabelsOverlay labels={product.labels} />
@@ -58,23 +56,18 @@ export function ProductCard({ product }: { product: ProductCardItem }) {
           </p>
         ) : null}
 
-        <Button
-          type="button"
-          onClick={() =>
-            addItem({
-              id: product.id,
-              name: getLocalizedValue(product.name),
-              slug,
-              image: product.image ?? "",
-              price: product.price?.centAmount ?? 0,
-              currency: product.price?.currencyCode ?? "USD",
-            })
-          }
+        <CartAddButton
+          item={{
+            id: product.id,
+            name: getLocalizedValue(product.name),
+            slug,
+            image: product.image ?? "",
+            price: product.price?.centAmount ?? 0,
+            currency: product.price?.currencyCode ?? "USD",
+          }}
           size="sm"
           className="w-full"
-        >
-          Add to cart
-        </Button>
+        />
         <WishlistButton productId={product.id} variantId={product.variantId} />
       </div>
     </article>

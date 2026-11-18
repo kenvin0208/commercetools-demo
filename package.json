@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -11,7 +11,8 @@
     "build-storybook": "storybook build",
     "test:account": "node --test tests/account.test.mjs",
     "test:labels": "node --test tests/product-labels.test.mjs",
-    "prices:add-aud": "node scripts/add-aud-prices.mjs"
+    "prices:add-aud": "node scripts/add-aud-prices.mjs",
+    "store-locator:setup": "node scripts/setup-store-locator-type.mjs"
   },
   "dependencies": {
     "@commercetools/checkout-browser-sdk": "^1.7.4",

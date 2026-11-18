@@ -1,0 +1,24 @@
+mutation UpdateStore(
+  $id: String!
+  $version: Long!
+  $actions: [StoreUpdateAction!]!
+) {
+  updateStore(id: $id, version: $version, actions: $actions) {
+    id
+    version
+    key
+    nameAllLocales {
+      locale
+      value
+    }
+    custom {
+      type {
+        key
+      }
+      customFieldsRaw {
+        name
+        value
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+query FetchStoreDetails($key: String!) {
+  store(key: $key) {
+    id
+    version
+    key
+    nameAllLocales {
+      locale
+      value
+    }
+    custom {
+      type {
+        key
+      }
+      customFieldsRaw {
+        name
+        value
+      }
+    }
+  }
+}
