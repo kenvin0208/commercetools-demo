@@ -8,17 +8,20 @@ locator.
 ## One-time Store Type setup
 
 Store locator fields require the `store-locator` Custom Type on the Store
-resource. From the storefront repository root, configure the required
-`CT_*` credentials and run:
+resource. From the storefront repository root, configure the project and API
+credentials and run:
 
 ```sh
 npm run store-locator:setup
 ```
 
-The script uses the project's existing commercetools SDK dependencies and the
-`manage_types` API scope, loading credentials from `.env.local` or `.env`.
-It creates the Type if missing, is safe to rerun when
-the schema already matches, and stops without changing an incompatible Type.
+The script uses the project's existing commercetools SDK dependencies and
+loads settings from `.env.local` or `.env`. Use a dedicated API client with
+the `manage_types` scope by setting `CT_TYPES_CLIENT_ID` and
+`CT_TYPES_CLIENT_SECRET`; these override the shared `CT_CLIENT_ID` and
+`CT_CLIENT_SECRET` only for this setup script. It creates the Type if missing,
+is safe to rerun when the schema already matches, and stops without changing
+an incompatible Type.
 
 The application checks the Type schema and disables Store creation or editing
 until all five fields have the expected types. It does not replace a Store's

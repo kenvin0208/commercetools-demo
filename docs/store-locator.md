@@ -20,7 +20,7 @@ Create the `store-locator` Type and its fields by running this command from the 
 npm run store-locator:setup
 ```
 
-The script reads `CT_PROJECT_KEY`, `CT_AUTH_URL`, `CT_API_URL`, `CT_CLIENT_ID`, and `CT_CLIENT_SECRET` from `.env.local` or `.env` (`.env.local` takes precedence); the API client needs the `manage_types` scope for that project. It creates the Type if it is missing, reports success if the existing Type has the required Store fields, and stops without changing an incompatible Type. Then create or edit Store records in Merchant Center and attach this Type with the relevant values.
+The script reads `CT_PROJECT_KEY`, `CT_AUTH_URL`, and `CT_API_URL` from `.env.local` or `.env` (`.env.local` takes precedence). For credentials, it uses `CT_TYPES_CLIENT_ID` and `CT_TYPES_CLIENT_SECRET` when both are set; otherwise, it falls back to `CT_CLIENT_ID` and `CT_CLIENT_SECRET`. Prefer a dedicated API client with only the `manage_types` scope for this setup, and put its credentials in the `CT_TYPES_*` variables so other local features keep using the existing client. The script creates the Type if it is missing, reports success if the existing Type has the required Store fields, and stops without changing an incompatible Type. Then create or edit Store records in Merchant Center and attach this Type with the relevant values.
 
 The API client configured for the storefront must be able to read Stores. The existing server-side commercetools client is used; credentials remain on the server.
 

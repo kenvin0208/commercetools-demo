@@ -18,13 +18,23 @@ const {
   CT_PROJECT_KEY: projectKey,
   CT_AUTH_URL: authUrl,
   CT_API_URL: apiUrl,
-  CT_CLIENT_ID: clientId,
-  CT_CLIENT_SECRET: clientSecret,
 } = process.env;
+
+const typesClientId = process.env.CT_TYPES_CLIENT_ID;
+const typesClientSecret = process.env.CT_TYPES_CLIENT_SECRET;
+
+if (Boolean(typesClientId) !== Boolean(typesClientSecret)) {
+  throw new Error(
+    "Set both CT_TYPES_CLIENT_ID and CT_TYPES_CLIENT_SECRET, or leave both unset to use CT_CLIENT_ID and CT_CLIENT_SECRET."
+  );
+}
+
+const clientId = typesClientId || process.env.CT_CLIENT_ID;
+const clientSecret = typesClientSecret || process.env.CT_CLIENT_SECRET;
 
 if (!projectKey || !authUrl || !apiUrl || !clientId || !clientSecret) {
   throw new Error(
-    "Missing commercetools credentials. Set CT_PROJECT_KEY, CT_AUTH_URL, CT_API_URL, CT_CLIENT_ID, and CT_CLIENT_SECRET in .env.local."
+    "Missing commercetools credentials. Set CT_PROJECT_KEY, CT_AUTH_URL, CT_API_URL, and either CT_TYPES_CLIENT_ID/CT_TYPES_CLIENT_SECRET or CT_CLIENT_ID/CT_CLIENT_SECRET in .env.local."
   );
 }
 
